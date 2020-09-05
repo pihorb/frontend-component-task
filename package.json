@@ -8,19 +8,22 @@
     "email": "vlad@shelf.io",
     "url": "https://shelf.io"
   },
+  "main": "lib",
+  "types": "lib/index.d.ts",
   "files": [
     "lib"
   ],
-  "main": "lib",
-  "types": "lib/index.d.ts",
   "scripts": {
     "build": "rm -rf lib/ && yarn build:types && yarn build:code",
     "build:code": "babel src --out-dir lib --ignore '**/*.test.ts' --extensions '.ts' && find ./lib -name '*.test.d.ts' -delete",
+    "build:dev": "webpack --mode development",
+    "build:prod": "webpack --mode production",
     "build:types": "tsc --emitDeclarationOnly --declaration --isolatedModules false --declarationDir lib",
     "coverage": "yarn test --coverage",
     "lint": "eslint . --ext .js,.ts,.json --fix",
     "lint:ci": "eslint . --ext .js,.ts,.json",
     "prepack": "yarn build",
+    "start": "webpack-dev-server --mode development --open",
     "test": "TZ=UTC jest src",
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch"
@@ -41,27 +44,51 @@
       "git add"
     ]
   },
+  "browserslist": [
+    "> 1%",
+    "last 3 version"
+  ],
   "prettier": "@shelf/prettier-config",
   "jest": {
     "testEnvironment": "node"
   },
   "dependencies": {},
   "devDependencies": {
-    "@babel/cli": "7.8.4",
-    "@babel/core": "7.9.0",
-    "@babel/preset-env": "7.9.0",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
     "@babel/preset-typescript": "7.9.0",
     "@shelf/eslint-config": "0.14.2",
     "@shelf/prettier-config": "0.0.1",
     "@types/jest": "26.0.9",
     "@types/node": "12",
+    "autoprefixer": "^9.8.6",
     "babel-jest": "26.2.2",
+    "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^4.2.2",
+    "css-mqpacker": "^7.0.0",
+    "cssnano": "^4.1.10",
     "eslint": "7.7.0",
     "husky": "4.2.5",
     "jest": "26.2.2",
     "lint-staged": "10.2.11",
+    "mini-css-extract-plugin": "^0.11.0",
+    "node-sass": "^4.14.1",
+    "optimize-css-assets-webpack-plugin": "^5.0.4",
+    "postcss-loader": "^3.0.0",
     "prettier": "2.0.5",
-    "typescript": "3.8.3"
+    "sass": "^1.26.10",
+    "sass-loader": "^10.0.2",
+    "style-loader": "^1.2.1",
+    "terser-webpack-plugin": "^4.1.0",
+    "typescript": "3.8.3",
+    "url-loader": "^4.1.0",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  },
+  "peerDependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "engines": {
     "node": ">=12"

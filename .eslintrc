@@ -1,6 +1,12 @@
 {
   "root": true,
-  "extends": [
-    "@shelf/eslint-config/typescript"
+  "extends": ["@shelf/eslint-config/typescript"],
+  "overrides": [
+    {
+      "files": ["*.js"],
+      "rules": {
+        "@typescript-eslint/no-var-requires": "off"
+      }
+    }
   ]
 }
