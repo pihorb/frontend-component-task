@@ -11,5 +11,5 @@ export const roles = [
   {id: 1, name: 'user'},
   {id: 2, name: 'member'},
   {id: 3, name: 'admin'},
-  {id: 4, name: 'cusom'}
+  {id: 4, name: 'custom'}
 ];
