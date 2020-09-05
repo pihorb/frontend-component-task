@@ -1,4 +1,12 @@
 .check-box
   display: flex
-  flex-direction: row
-  color: red
+  align-items: center
+  cursor: pointer
+  @media screen and (max-width: 768px)
+    width: 25%
+  &__img
+    width: 15px
+    height: 15px
+  &__name
+    margin: 0 10px
+    text-transform: capitalize

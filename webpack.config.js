@@ -1,8 +1,7 @@
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
-const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const path = require('path');
 const pkg = require('./package.json');
 
 const babelOptions = (preset) => {
@@ -24,13 +23,9 @@ module.exports = {
     library: pkg.name,
     libraryTarget: 'umd'
   },
-  plugins: [
-    new CleanWebpackPlugin(),
-    new MiniCssExtractPlugin({
-      filename: '[name].css'
-    })
-  ],
+  plugins: [new CleanWebpackPlugin()],
   optimization: {
+    minimize: true,
     minimizer: [new OptimizeCssAssetsPlugin(), new TerserPlugin()]
   },
   module: {
@@ -43,13 +38,12 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader]
+        use: ['css-loader', 'style-loader']
       },
       {
         test: /\.s[ac]ss$/,
         use: [
           'style-loader',
-          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {sourceMap: true}

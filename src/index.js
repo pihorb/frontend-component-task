@@ -1,12 +1,20 @@
 import React from 'react';
-import CheckBox from './components/check-box';
+import CheckBoxes from './components/check-boxes';
 import DropDown from './components/drop-down';
+import './index.sass';
 
 const App = () => {
   return (
     <div className="container">
-      <CheckBox />
-      <DropDown />
+      <div className="container__content">
+        <div className="container__dropdown">
+          <span className="container__title">User role:</span>
+          <DropDown />
+        </div>
+        <CheckBoxes path="folders" />
+        <hr />
+        <CheckBoxes path="gems" />
+      </div>
     </div>
   );
 };
