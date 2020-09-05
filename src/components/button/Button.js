@@ -3,10 +3,15 @@ import './Button.sass';
 import {useAppContext} from '../../context/AppContext';
 
 const Button = ({children}) => {
-  const {role, checkBoxes, currenSelected} = useAppContext();
+  const {role, checkBoxes, lastChoice} = useAppContext();
+  const state = {
+    currnetRole: role,
+    lastSelected: lastChoice,
+    ...checkBoxes
+  };
 
   return (
-    <button className="button" onClick={() => console.log(role, checkBoxes, currenSelected)}>
+    <button className="button" onClick={() => console.log(state)}>
       {children}
     </button>
   );

@@ -5,7 +5,7 @@ import unChecked from '../../materials/uncheck.svg';
 import {useAppContext} from '../../context/AppContext';
 
 const CheckBox = ({name, path}) => {
-  const {checkBoxes, role} = useAppContext();
+  const {checkBoxes, role, updateCheckBoxes} = useAppContext();
   const isChecked = checkBoxes[path].includes(name);
 
   const styles = {
@@ -17,7 +17,7 @@ const CheckBox = ({name, path}) => {
     <div
       className="check-box"
       style={role !== 'custom' ? styles : {}}
-      onClick={() => console.log('click')}
+      onClick={() => updateCheckBoxes(name, path, isChecked)}
     >
       <img className="check-box__img" src={isChecked ? check : unChecked} alt="check" />
       <span className="check-box__name">{name}</span>
