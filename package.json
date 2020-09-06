@@ -14,16 +14,15 @@
     "lib"
   ],
   "scripts": {
-    "build": "rm -rf lib/ && yarn build:types && yarn build:code",
-    "build:code": "babel src --out-dir lib --ignore '**/*.test.ts' --extensions '.ts' && find ./lib -name '*.test.d.ts' -delete",
-    "build:dev": "webpack --mode development",
-    "build:prod": "webpack --mode production",
+    "build": "cross-env NODE_ENV=production webpack --mode production",
     "build:types": "tsc --emitDeclarationOnly --declaration --isolatedModules false --declarationDir lib",
     "coverage": "yarn test --coverage",
+    "demo": "cross-env NODE_ENV=demo webpack-dev-server --mode development",
+    "dev": "cross-env NODE_ENV=development webpack --mode development",
     "lint": "eslint . --ext .js,.ts,.json --fix",
     "lint:ci": "eslint . --ext .js,.ts,.json",
     "prepack": "yarn build",
-    "start": "webpack-dev-server --mode development --open",
+    "prepublish": "rm -rf ./lib && npm run build:prod",
     "test": "TZ=UTC jest src",
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch"
@@ -72,10 +71,12 @@
     "babel-jest": "^26.2.2",
     "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
+    "cross-env": "^7.0.2",
     "css-loader": "^4.2.2",
     "css-mqpacker": "^7.0.0",
     "cssnano": "^4.1.10",
     "eslint": "7.7.0",
+    "html-webpack-plugin": "^4.4.1",
     "husky": "4.2.5",
     "identity-obj-proxy": "^3.0.0",
     "jest": "26.2.2",
@@ -96,7 +97,8 @@
     "typescript": "3.8.3",
     "url-loader": "^4.1.0",
     "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
   },
   "peerDependencies": {
     "react": "^16.13.1",

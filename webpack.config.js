@@ -2,7 +2,16 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const pkg = require('./package.json');
+
+const htmlWebpackPlugin = new HtmlWebpackPlugin({
+  template: path.join(__dirname, 'examples/src/index.html'),
+  filename: './index.html'
+});
+
+const isDemo = process.env.NODE_ENV === 'demo';
+const entry = isDemo ? 'examples/src/index.js' : './src/index.js';
 
 const babelOptions = (preset) => {
   const opts = {
@@ -16,14 +25,17 @@ const babelOptions = (preset) => {
 };
 
 module.exports = {
-  entry: path.join(__dirname, './src/index.js'),
+  entry: path.join(__dirname, entry),
+  devServer: {
+    port: 3001
+  },
   output: {
     path: path.join(__dirname, './lib'),
     filename: 'index.js',
     library: pkg.name,
     libraryTarget: 'umd'
   },
-  plugins: [new CleanWebpackPlugin()],
+  plugins: isDemo ? [new CleanWebpackPlugin(), htmlWebpackPlugin] : [new CleanWebpackPlugin()],
   optimization: {
     minimize: true,
     minimizer: [new OptimizeCssAssetsPlugin(), new TerserPlugin()]
@@ -76,5 +88,5 @@ module.exports = {
       }
     ]
   },
-  externals: [...Object.keys(pkg.peerDependencies), ...Object.keys(pkg.dependencies)]
+  externals: isDemo ? [] : [...Object.keys(pkg.peerDependencies), ...Object.keys(pkg.dependencies)]
 };
