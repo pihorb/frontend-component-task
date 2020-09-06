@@ -1,6 +1,6 @@
 import React, {createContext, useContext, useReducer} from 'react';
-import reducer from '../reducers/reducer';
-import {ADD_FOLDERS, ADD_GEMS, REMOVE_FOLDERS, REMOVE_GEMS} from '../reducers/types';
+import reducer from './reducer';
+import {ADD_FOLDERS, ADD_GEMS, REMOVE_FOLDERS, REMOVE_GEMS} from './types';
 
 const AppContext = createContext();
 
@@ -8,7 +8,7 @@ export const useAppContext = () => {
   return useContext(AppContext);
 };
 
-export const setCheckBoxes = (...opts) => {
+export const defaultSelected = (...opts) => {
   const min = ['view', 'share'];
 
   if (opts) min.push(...opts);
@@ -20,17 +20,17 @@ export const AppProvider = ({children}) => {
   const [state, dispatch] = useReducer(reducer, {
     role: 'user',
     lastChoice: null,
-    checkBoxes: {
-      gems: setCheckBoxes('create', 'update'),
-      folders: setCheckBoxes('create', 'update')
+    slots: {
+      gems: defaultSelected('create', 'update'),
+      folders: defaultSelected('create', 'update')
     }
   });
 
-  const setActiveRole = (role) => {
+  const toggleRole = (role) => {
     dispatch({type: role.name.toUpperCase()});
   };
 
-  const updateCheckBoxes = (name, path, isChecked) => {
+  const toggleSelect = (name, path, isChecked) => {
     switch (true) {
       case isChecked && path === 'gems':
         return dispatch({type: REMOVE_GEMS, payload: name});
@@ -48,10 +48,10 @@ export const AppProvider = ({children}) => {
   return (
     <AppContext.Provider
       value={{
-        toggle: setActiveRole,
-        updateCheckBoxes,
+        toggleRole,
+        toggleSelect,
         role: state.role,
-        checkBoxes: state.checkBoxes,
+        slots: state.slots,
         lastChoice: state.lastChoice
       }}
     >

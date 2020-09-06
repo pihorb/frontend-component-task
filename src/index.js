@@ -3,7 +3,7 @@ import CheckBoxes from './components/check-boxes';
 import DropDown from './components/drop-down';
 import Button from './components/button';
 import './index.sass';
-import {AppProvider} from './context/AppContext';
+import {AppProvider} from './store/context';
 
 const App = () => {
   return (

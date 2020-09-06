@@ -5,7 +5,7 @@ import CheckBox from '../check-box';
 
 const CheckBoxes = ({path}) => {
   return (
-    <div className="check-boxes">
+    <div data-testid="check-boxes" className="check-boxes">
       <div className="check-boxes__title">{path}</div>
       <div className="check-boxes__list">
         {list.map((item) => (

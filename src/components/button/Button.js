@@ -1,17 +1,17 @@
 import React from 'react';
 import './Button.sass';
-import {useAppContext} from '../../context/AppContext';
+import {useAppContext} from '../../store/context';
 
 const Button = ({children}) => {
-  const {role, checkBoxes, lastChoice} = useAppContext();
+  const {role, slots, lastChoice} = useAppContext();
   const state = {
     currnetRole: role,
     lastSelected: lastChoice,
-    ...checkBoxes
+    ...slots
   };
 
   return (
-    <button className="button" onClick={() => console.log(state)}>
+    <button data-testid="btn" className="button" onClick={() => console.log(state)}>
       {children}
     </button>
   );

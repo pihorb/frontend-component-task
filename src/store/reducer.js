@@ -8,7 +8,7 @@ import {
   REMOVE_GEMS,
   USER
 } from './types';
-import {setCheckBoxes} from '../context/AppContext';
+import {defaultSelected} from './context';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -16,34 +16,34 @@ const reducer = (state, action) => {
       return {
         ...state,
         role: 'user',
-        checkBoxes: {
-          gems: setCheckBoxes('create', 'update'),
-          folders: setCheckBoxes('create', 'update')
+        slots: {
+          gems: defaultSelected('create', 'update'),
+          folders: defaultSelected('create', 'update')
         }
       };
     case MEMBER:
       return {
         ...state,
         role: 'member',
-        checkBoxes: {
-          gems: setCheckBoxes(),
-          folders: setCheckBoxes()
+        slots: {
+          gems: defaultSelected(),
+          folders: defaultSelected()
         }
       };
     case ADMIN:
       return {
         ...state,
         role: 'admin',
-        checkBoxes: {
-          gems: setCheckBoxes('create', 'update', 'move', 'delete'),
-          folders: setCheckBoxes('create', 'update', 'move', 'delete')
+        slots: {
+          gems: defaultSelected('create', 'update', 'move', 'delete'),
+          folders: defaultSelected('create', 'update', 'move', 'delete')
         }
       };
     case CUSTOM:
       return {
         ...state,
         role: 'custom',
-        checkBoxes: {
+        slots: {
           gems: [],
           folders: []
         }
@@ -52,34 +52,34 @@ const reducer = (state, action) => {
       return {
         ...state,
         lastChoice: action.payload,
-        checkBoxes: {
-          gems: [...state.checkBoxes.gems, action.payload],
-          folders: [...state.checkBoxes.folders]
+        slots: {
+          gems: [...state.slots.gems, action.payload],
+          folders: [...state.slots.folders]
         }
       };
     case ADD_FOLDERS:
       return {
         ...state,
         lastChoice: action.payload,
-        checkBoxes: {
-          gems: [...state.checkBoxes.gems],
-          folders: [...state.checkBoxes.folders, action.payload]
+        slots: {
+          gems: [...state.slots.gems],
+          folders: [...state.slots.folders, action.payload]
         }
       };
     case REMOVE_GEMS:
       return {
         ...state,
-        checkBoxes: {
-          gems: state.checkBoxes.gems.filter((item) => item !== action.payload),
-          folders: [...state.checkBoxes.folders]
+        slots: {
+          gems: state.slots.gems.filter((item) => item !== action.payload),
+          folders: [...state.slots.folders]
         }
       };
     case REMOVE_FOLDERS:
       return {
         ...state,
-        checkBoxes: {
-          gems: [...state.checkBoxes.gems],
-          folders: state.checkBoxes.folders.filter((item) => item !== action.payload)
+        slots: {
+          gems: [...state.slots.gems],
+          folders: state.slots.folders.filter((item) => item !== action.payload)
         }
       };
     default:

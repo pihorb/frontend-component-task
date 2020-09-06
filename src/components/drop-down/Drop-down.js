@@ -1,17 +1,17 @@
 import React from 'react';
 import './Drop-down.sass';
-import {useAppContext} from '../../context/AppContext';
+import {useAppContext} from '../../store/context';
 import {roles} from '../../config';
 
 const DropDown = () => {
-  const {toggle, role} = useAppContext();
+  const {toggleRole, role} = useAppContext();
 
   return (
     <div className="dropdown">
       <button className="dropdown__btn">{role}</button>
       <div className="dropdown__content">
         {roles.map((role) => (
-          <div className="dropdown__item" key={role.id} onClick={() => toggle(role)}>
+          <div className="dropdown__item" key={role.id} onClick={() => toggleRole(role)}>
             {role.name}
           </div>
         ))}
