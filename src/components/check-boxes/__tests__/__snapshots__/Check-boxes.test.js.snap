@@ -1,0 +1,148 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckBoxes component test check if snapshot is matching  1`] = `
+<div
+  className="check-boxes"
+  data-testid="check-boxes"
+>
+  <div
+    className="check-boxes__title"
+  />
+  <div
+    className="check-boxes__list"
+  >
+    <div
+      className="check-box"
+      data-testid="check-box"
+      onClick={[Function]}
+      style={
+        Object {
+          "opacity": 0.5,
+          "pointerEvents": "none",
+        }
+      }
+    >
+      <img
+        alt="empty"
+        className="check-box__img"
+        src={Object {}}
+      />
+      <span
+        className="check-box__name"
+      >
+        create
+      </span>
+    </div>
+    <div
+      className="check-box"
+      data-testid="check-box"
+      onClick={[Function]}
+      style={
+        Object {
+          "opacity": 0.5,
+          "pointerEvents": "none",
+        }
+      }
+    >
+      <img
+        alt="empty"
+        className="check-box__img"
+        src={Object {}}
+      />
+      <span
+        className="check-box__name"
+      >
+        update
+      </span>
+    </div>
+    <div
+      className="check-box"
+      data-testid="check-box"
+      onClick={[Function]}
+      style={
+        Object {
+          "opacity": 0.5,
+          "pointerEvents": "none",
+        }
+      }
+    >
+      <img
+        alt="empty"
+        className="check-box__img"
+        src={Object {}}
+      />
+      <span
+        className="check-box__name"
+      >
+        move
+      </span>
+    </div>
+    <div
+      className="check-box"
+      data-testid="check-box"
+      onClick={[Function]}
+      style={
+        Object {
+          "opacity": 0.5,
+          "pointerEvents": "none",
+        }
+      }
+    >
+      <img
+        alt="empty"
+        className="check-box__img"
+        src={Object {}}
+      />
+      <span
+        className="check-box__name"
+      >
+        delete
+      </span>
+    </div>
+    <div
+      className="check-box"
+      data-testid="check-box"
+      onClick={[Function]}
+      style={
+        Object {
+          "opacity": 0.5,
+          "pointerEvents": "none",
+        }
+      }
+    >
+      <img
+        alt="empty"
+        className="check-box__img"
+        src={Object {}}
+      />
+      <span
+        className="check-box__name"
+      >
+        view
+      </span>
+    </div>
+    <div
+      className="check-box"
+      data-testid="check-box"
+      onClick={[Function]}
+      style={
+        Object {
+          "opacity": 0.5,
+          "pointerEvents": "none",
+        }
+      }
+    >
+      <img
+        alt="empty"
+        className="check-box__img"
+        src={Object {}}
+      />
+      <span
+        className="check-box__name"
+      >
+        share
+      </span>
+    </div>
+  </div>
+</div>
+`;

@@ -7,7 +7,7 @@ const DropDown = () => {
   const {toggleRole, role} = useAppContext();
 
   return (
-    <div className="dropdown">
+    <div data-testid="dropdown" className="dropdown">
       <button className="dropdown__btn">{role}</button>
       <div className="dropdown__content">
         {roles.map((role) => (

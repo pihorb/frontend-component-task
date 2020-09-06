@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DropDown component test check if snapshot is matching  1`] = `
+<div
+  className="dropdown"
+  data-testid="dropdown"
+>
+  <button
+    className="dropdown__btn"
+  >
+    user
+  </button>
+  <div
+    className="dropdown__content"
+  >
+    <div
+      className="dropdown__item"
+      onClick={[Function]}
+    >
+      user
+    </div>
+    <div
+      className="dropdown__item"
+      onClick={[Function]}
+    >
+      member
+    </div>
+    <div
+      className="dropdown__item"
+      onClick={[Function]}
+    >
+      admin
+    </div>
+    <div
+      className="dropdown__item"
+      onClick={[Function]}
+    >
+      custom
+    </div>
+  </div>
+</div>
+`;

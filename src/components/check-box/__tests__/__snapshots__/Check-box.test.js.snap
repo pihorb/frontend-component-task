@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckBox component test check if snapshot is matching  1`] = `
+<div
+  className="check-box"
+  data-testid="check-box"
+  onClick={[Function]}
+  style={
+    Object {
+      "opacity": 0.5,
+      "pointerEvents": "none",
+    }
+  }
+>
+  <img
+    alt="empty"
+    className="check-box__img"
+    src={Object {}}
+  />
+  <span
+    className="check-box__name"
+  >
+    delete
+  </span>
+</div>
+`;
