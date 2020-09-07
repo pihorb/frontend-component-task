@@ -88,5 +88,5 @@ module.exports = {
       }
     ]
   },
-  externals: isDemo ? [] : [...Object.keys(pkg.peerDependencies), ...Object.keys(pkg.dependencies)]
+  externals: isDemo ? [] : [...Object.keys(pkg.peerDependencies)]
 };

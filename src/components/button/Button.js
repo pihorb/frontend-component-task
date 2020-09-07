@@ -11,7 +11,11 @@ const Button = ({children}) => {
   };
 
   return (
-    <button data-testid="btn" className="button" onClick={() => console.log(state)}>
+    <button
+      data-testid="btn"
+      className="button"
+      onClick={() => alert(JSON.stringify(state, null, 2))}
+    >
       {children}
     </button>
   );
